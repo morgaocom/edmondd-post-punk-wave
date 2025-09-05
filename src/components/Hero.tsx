@@ -23,7 +23,7 @@ const Hero = ({ onPlayTrack }: HeroProps) => {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <div className="mb-8 animate-fade-in-up">
           <h1 
-            className="text-6xl md:text-8xl font-black uppercase tracking-wider text-neon animate-pulse-neon"
+            className="text-6xl md:text-8xl font-black tracking-wider text-neon animate-pulse-neon"
             data-text="edmondD"
           >
             edmondD
