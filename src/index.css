@@ -8,35 +8,55 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Post-punk inspired dark theme */
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 283 100% 68%;
+    --primary-foreground: 0 0% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 283 100% 68%;
+    --accent-foreground: 0 0% 8%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 25%;
+    --input: 0 0% 20%;
+    --ring: 283 100% 68%;
 
-    --radius: 0.5rem;
+    /* Post-punk design tokens */
+    --neon: 283 100% 68%;
+    --neon-glow: 283 100% 85%;
+    --dark-surface: 0 0% 12%;
+    --darker-surface: 0 0% 8%;
+    
+    /* Gradients */
+    --gradient-neon: linear-gradient(135deg, hsl(283 100% 68%), hsl(320 100% 70%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 8%), hsl(0 0% 4%));
+    --gradient-overlay: linear-gradient(180deg, transparent, hsl(0 0% 8% / 0.8));
+    
+    /* Shadows */
+    --shadow-neon: 0 0 20px hsl(283 100% 68% / 0.3), 0 0 40px hsl(283 100% 68% / 0.1);
+    --shadow-deep: 0 10px 30px hsl(0 0% 0% / 0.5);
+    
+    /* Animations */
+    --transition-glow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --glitch-duration: 0.3s;
+
+    --radius: 0.25rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +121,95 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer components {
+  /* Post-punk typography */
+  .text-neon {
+    color: hsl(var(--neon));
+    text-shadow: var(--shadow-neon);
+  }
+  
+  .text-glitch {
+    position: relative;
+    animation: glitch 2s infinite;
+  }
+  
+  .text-glitch:before,
+  .text-glitch:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .text-glitch:before {
+    animation: glitch-1 0.5s infinite;
+    color: hsl(0 100% 70%);
+    z-index: -1;
+  }
+  
+  .text-glitch:after {
+    animation: glitch-2 0.5s infinite;
+    color: hsl(200 100% 70%);
+    z-index: -2;
+  }
+
+  /* Background patterns */
+  .bg-gradient-neon {
+    background: var(--gradient-neon);
+  }
+  
+  .bg-gradient-dark {
+    background: var(--gradient-dark);
+  }
+  
+  /* Neon button effect */
+  .btn-neon {
+    transition: var(--transition-glow);
+  }
+  
+  .btn-neon:hover {
+    box-shadow: var(--shadow-neon);
+    transform: translateY(-1px);
+  }
+}
+
+@layer utilities {
+  @keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+  }
+  
+  @keyframes glitch-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-1px, -1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(-1px, -1px); }
+    80% { transform: translate(-1px, -1px); }
+  }
+  
+  @keyframes glitch-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(1px, 1px); }
+    40% { transform: translate(1px, 1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, 1px); }
+  }
+  
+  @keyframes pulse-neon {
+    0%, 100% { 
+      box-shadow: 0 0 5px hsl(var(--neon)), 0 0 10px hsl(var(--neon)), 0 0 15px hsl(var(--neon));
+    }
+    50% { 
+      box-shadow: 0 0 20px hsl(var(--neon)), 0 0 30px hsl(var(--neon)), 0 0 40px hsl(var(--neon));
+    }
   }
 }
