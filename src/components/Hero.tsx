@@ -33,7 +33,7 @@ const Hero = ({ onPlayTrack }: HeroProps) => {
         
         <div className="mb-12 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide">
-            POST-PUNK ARTIST
+            Back
           </p>
         </div>
         
@@ -44,7 +44,7 @@ const Hero = ({ onPlayTrack }: HeroProps) => {
             className="bg-transparent border-2 border-neon text-neon hover:bg-neon hover:text-primary-foreground transition-all duration-300 px-8 py-6 text-lg font-semibold tracking-wider btn-neon"
           >
             <Play className="mr-2 h-5 w-5" />
-            PLAY LATEST TRACK
+            Play Suspected By My Beloved
           </Button>
         </div>
       </div>

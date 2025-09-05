@@ -67,7 +67,7 @@ const Contact = () => {
         </div>
         
         <div className="border-t border-border/30 pt-8">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-lg text-muted-foreground leading-relaxed mb-6">
             © 2024 edmondD. All rights reserved.
           </p>
         </div>
